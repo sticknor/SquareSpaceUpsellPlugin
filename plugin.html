@@ -1,0 +1,129 @@
+<style>
+    #upsell{
+        position:fixed;
+        top:0px;
+        bottom:0px;
+        left:0px;
+        right:0px;
+        display:none;
+        align-items:center;
+        justify-content:center;
+        z-index:2000;
+        background-color: #000000aa;
+    }
+
+    #upsell-content{
+        background-color: white;
+        max-width: 80%;
+        max-height: 80vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 2%;
+    }
+
+    #close-button{
+        position: absolute;
+        top: 5vh;
+        right: 7%;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        background-color: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #tooltip-text {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        right: 105%;
+        cursor: pointer;
+    }
+
+    #tooltip-text {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        right: 105%;
+        user-select: none;
+    }
+
+    #close-button:hover #tooltip-text {
+        visibility: visible;
+    }
+
+
+</style>
+
+<div id="upsell">
+    <div id="upsell-content"></div>
+    <div id="close-button">X
+        <span id="tooltip-text">
+            No thanks, maybe later.
+        </span>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(() => {
+        $('#upsell-content').load('/membership-upsell #content');
+    });
+
+    const addToCartListener = (wrapper) => {
+        
+        const addToCartButton = $('.sqs-add-to-cart-button');
+        const upsellContainer = $("#upsell");
+        const upsellContent = $("#upsell-content");
+        const closeButton = $("#close-button");
+
+        const onAddToCart = () => {     
+            // check if product meets conditions
+            var blockUpsellForProduct = $("#block-upsell").length > 0;
+
+            if (!blockUpsellForProduct) {
+            setTimeout(
+                // show pop up
+                () => {
+                    upsellContainer.css("display", "flex");
+                    $('body').css('overflow','hidden');
+                }, 2100);
+            }
+        };
+        addToCartButton.on('click', onAddToCart);
+        
+        // close pop up
+        upsellContainer.on('click', (e) =>{
+            e.stopPropagation();
+            upsellContainer.css("display", "none");
+            $('body').css('overflow','auto')
+        });
+
+        upsellContent.on('click', (e) =>{
+            e.stopPropagation();
+        });
+    };
+
+    document.addEventListener('DOMContentLoaded', addToCartListener);
+    window.addEventListener('mercury:load', addToCartListener);
+
+</script>
