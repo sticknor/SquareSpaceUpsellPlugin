@@ -8,7 +8,10 @@ A small bit of custom code, made specially for NYC Crit Club, that allows you to
 
 ### Demo and Installation Video
 
-[![video](https://img.youtube.com/vi/CCtkLkIMuto/0.jpg)]("https://youtu.be/CCtkLkIMuto")
+HERE: https://youtu.be/CCtkLkIMuto
+
+
+![video](https://img.youtube.com/vi/CCtkLkIMuto/0.jpg)
 
 ### Installing
 
