@@ -4,17 +4,37 @@ A small bit of custom code, made specially for NYC Crit Club, that allows you to
 
 ### Requirements
 - Squarespace 7.0
-- Use on 
+- Use with Product Pages
 
 ### Demo and Installation Video
 
 [![video](https://img.youtube.com/vi/CCtkLkIMuto/0.jpg)]("https://youtu.be/CCtkLkIMuto")
 
-### Code
+### Installing
 
+- Go to a product page
+- Hover over a products block
+- Settings > Advanced > Page Header Code Injection 
+- Paste the following code
 https://raw.githubusercontent.com/sticknor/SquareSpaceUpsellPlugin/main/plugin.html
 
-### Warnings
+### Changing Pop Up Page (see video)
+- In the plugin code, change line 95 to the handle of the page you would like to pop up. Make sure to include `#content` after the handle. E.g.
+```
+CHANGE
+$('#upsell-content').load('/membership-upsell #content');
+TO
+$('#upsell-content').load('/new-upsell-page #content');
+```
+
+### Blocking Upsell (see video)
+
+If you want to block an upsell from a particular product, edit the product. In additional info, add a code block with this content:
+```
+<div id="block-upsell"></div>
+```
+
+### Limitations
 
 The pop up page is limited in the features that work well when 'popped-up'
 - The product-embed is hit or miss, so it is better to include a link to the product page. 
