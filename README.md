@@ -6,9 +6,9 @@ A small bit of custom code, made specially for NYC Crit Club, that allows you to
 - Squarespace 7.0
 - Use on 
 
-### Usage
+### Demo and Installation Video
 
-Demo:
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/CCtkLkIMuto/0.jpg)]("https://youtu.be/CCtkLkIMuto")
 
 ### Code
 
